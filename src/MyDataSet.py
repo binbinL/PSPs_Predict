@@ -30,7 +30,6 @@ class MyDataset(Dataset):
         seq = []
         df_all = pd.read_csv(file_path)
         df_all['SeqVec'] = df_all['SeqVec'].apply(lambda x: np.array(ast.literal_eval(x)))
-        df_all = df_all.sample(frac=1, random_state=42).reset_index(drop=True)
         for i in range(len(df_all)):
             embedding.append(df_all['SeqVec'][i])
             labels.append(df_all['Label'][i])
